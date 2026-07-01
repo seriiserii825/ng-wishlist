@@ -8,7 +8,11 @@
   "projects": {
     "ng-wishlist": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@school/angular-component": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,9 +28,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
