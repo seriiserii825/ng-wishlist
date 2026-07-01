@@ -1,3 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './fonts.scss';
 @import 'tailwindcss';
+
+body {
+  font-family: 'Jetbrainsmono', sans-serif;
+  font-size: 18px;
+  color: white;
+  background: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+
+@theme {
+  --color-dark: #000;
+  --color-light: #fff;
+  --color-primary: #ae7aff;
+
+  --font-1: 'Jetbrainsmono', sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply border-0 bg-primary text-dark py-2.5 px-5 font-bold text-sm;
+  }
+  .title {
+    @apply text-[16px] font-extrabold;
+  }
+  .subtitle {
+    @apply text-sm;
+  }
+}
