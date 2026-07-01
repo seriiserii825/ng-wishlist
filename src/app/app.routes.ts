@@ -14,13 +14,13 @@ export const routes: Routes = [
         component: SearchPageComponent,
       },
       {
-        path: 'login',
-        component: LoginPageComponent,
-      },
-      {
         path: 'profile',
         component: ProfilePageComponent,
       },
     ],
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
   },
 ];
