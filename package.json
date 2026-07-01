@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "predev": "node scripts/generate-env.js",
     "dev": "ng serve",
+    "prebuild": "node scripts/generate-env.js",
     "build": "ng build",
+    "prewatch": "node scripts/generate-env.js",
     "watch": "ng build --watch --configuration development",
+    "pretest": "node scripts/generate-env.js",
     "test": "ng test",
     "lint": "ng lint"
   },
@@ -29,6 +33,7 @@
     "@eslint/js": "^10.0.1",
     "@tailwindcss/postcss": "^4.3.2",
     "angular-eslint": "21.4.0",
+    "dotenv": "^17.4.2",
     "eslint": "^10.3.0",
     "jsdom": "^28.0.0",
     "postcss": "^8.5.16",
