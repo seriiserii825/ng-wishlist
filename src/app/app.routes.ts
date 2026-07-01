@@ -3,6 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SearchPageComponent } from './page/search-page/search-page.component';
 import { ProfilePageComponent } from './page/profile-page/profile-page.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
+import { canActivateAuth } from './auth/access.guard';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,7 @@ export const routes: Routes = [
         component: ProfilePageComponent,
       },
     ],
+    canActivate: [canActivateAuth],
   },
   {
     path: 'login',
