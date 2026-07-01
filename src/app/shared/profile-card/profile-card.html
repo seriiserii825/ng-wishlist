@@ -2,7 +2,7 @@
   <div class="bg-dark grid grid-cols-4 gap-8 border border-light py-8 px-6">
     <div class="flex items-center gap-5">
       <div class="w-17.5 h-17.5 rounded-full overflow-hidden">
-        <img src="/img/avatar.avif" alt="avatar" />
+        <img [src]="profile.avatarUrl | imgUrl" alt="avatar" />
       </div>
       <div class="flex justify-center flex-col gap-1">
         <strong class="title">{{ profile.firstName }} {{ profile.lastName }}</strong>
