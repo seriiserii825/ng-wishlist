@@ -1,5 +1,20 @@
 <div class="flex flex-col gap-2">
   @for (item of menuItems; let i = $index; track i) {
-    <a [href]="item.route" [class]="item.icon">{{ item.title }}</a>
+    <a [href]="item.route" [class]="item.icon" class="text-white">
+      @if (item.icon === 'home') {
+        <div class="w-8">
+          <app-home-icon />
+        </div>
+      } @else if (item.icon === 'chat') {
+        <div class="w-8">
+          <app-chat-icon />
+        </div>
+      } @else {
+        <div class="w-8">
+          <app-search-icon />
+        </div>
+      }
+      <span>{{ item.title }}</span>
+    </a>
   }
 </div>
