@@ -11,17 +11,17 @@ export class SidebarMenuComponent {
   menuItems: IMenuItem[] = [
     {
       title: 'Dashboard',
-      icon: 'dashboard',
+      icon: 'home',
       route: '/dashboard',
     },
     {
       title: 'Users',
-      icon: 'people',
+      icon: 'chat-bubble-left-ellipsis',
       route: '/users',
     },
     {
       title: 'Settings',
-      icon: 'settings',
+      icon: 'fa-solid fa-magnifying-glass',
       route: '/settings',
     },
   ];
