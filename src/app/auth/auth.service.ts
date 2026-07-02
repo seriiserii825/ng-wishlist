@@ -22,13 +22,9 @@ export class AuthService {
     const formData = new FormData();
     formData.append('username', payload.username);
     formData.append('password', payload.password);
-    return this.http.post<ITokenResponse>(`${this.baseApiUrl}/auth/token`, formData).pipe(
-      tap((val) => this.saveTokens(val)),
-      catchError((err) => {
-        console.error(err);
-        return of(null);
-      }),
-    );
+    return this.http
+      .post<ITokenResponse>(`${this.baseApiUrl}/auth/token`, formData)
+      .pipe(tap((val) => this.saveTokens(val)));
   }
 
   get isAuth() {

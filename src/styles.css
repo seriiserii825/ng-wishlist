@@ -17,6 +17,19 @@ ul {
   list-style: none;
 }
 
+.svg-color svg *[fill] {
+  fill: currentcolor;
+}
+
+.svg-color svg *[stroke] {
+  stroke: currentcolor;
+}
+
+// Add a transition effect to SVG icons for smooth color changes
+svg * {
+  transition-property: fill, stroke;
+}
+
 @theme {
   --color-dark: #000;
   --color-light: #fff;

@@ -1,9 +1,10 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from './auth.service';
-import { catchError, switchMap, throwError } from 'rxjs';
+import { catchError, finalize, Observable, share, switchMap, throwError } from 'rxjs';
+import { ITokenResponse } from '../interfaces/ITokenResponse';
 
-let isRefreshed = false;
+let refresh$: Observable<ITokenResponse | null> | null = null;
 
 export const AuthTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
@@ -11,11 +12,7 @@ export const AuthTokenInterceptor: HttpInterceptorFn = (req, next) => {
   if (!token) {
     return next(req);
   }
-  if (isRefreshed) {
-    return refreshAndProceed(authService, req, next);
-  }
-  req = addToken(req, token);
-  return next(req).pipe(
+  return next(addToken(req, token)).pipe(
     catchError((err) => {
       if (err.status === 403) {
         return refreshAndProceed(authService, req, next);
@@ -30,18 +27,20 @@ function refreshAndProceed(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) {
-  if (!isRefreshed) {
-    isRefreshed = true;
-    return authService.refreshAuthToken().pipe(
-      switchMap((res) => {
-        if (!res) {
-          return throwError(() => new Error('Unable to refresh token'));
-        }
-        return next(addToken(req, res.access_token));
-      }),
+  if (!refresh$) {
+    refresh$ = authService.refreshAuthToken().pipe(
+      finalize(() => (refresh$ = null)),
+      share(),
     );
   }
-  return next(addToken(req, authService.accessToken!));
+  return refresh$.pipe(
+    switchMap((res) => {
+      if (!res) {
+        return throwError(() => new Error('Unable to refresh token'));
+      }
+      return next(addToken(req, res.access_token));
+    }),
+  );
 }
 
 function addToken(req: HttpRequest<unknown>, token: string) {
