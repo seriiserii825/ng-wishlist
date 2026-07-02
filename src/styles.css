@@ -31,6 +31,7 @@ svg * {
 
 @theme {
   --color-dark: #000;
+  --color-dark-hover: #161616;
   --color-light: #fff;
   --color-primary: #ae7aff;
 
