@@ -3,10 +3,11 @@ import { IMenuItem } from '../../interfaces/IMenuItem';
 import { HomeIcon } from '../../icons/home-icon/home-icon';
 import { ChatIcon } from '../../icons/chat-icon/chat-icon';
 import { SearchIcon } from '../../icons/search-icon/search-icon';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar-menu',
-  imports: [HomeIcon, ChatIcon, SearchIcon],
+  imports: [HomeIcon, ChatIcon, SearchIcon, NgFor],
   templateUrl: './sidebar-menu.component.html',
   styleUrl: './sidebar-menu.component.css',
 })
