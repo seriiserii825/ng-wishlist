@@ -18,4 +18,13 @@ export class ProfileService {
       }),
     );
   }
+
+  getMe() {
+    return this.http.get<IProfile>(`${this.baseApiUrl}/account/me`).pipe(
+      catchError((err) => {
+        console.error(err);
+        return of(null);
+      }),
+    );
+  }
 }
