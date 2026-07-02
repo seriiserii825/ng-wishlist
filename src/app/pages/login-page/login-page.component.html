@@ -11,6 +11,7 @@
           type="text"
           name="email"
           id="email"
+          autocomplete="username"
           placeholder="Enter login"
         />
       </div>
@@ -19,10 +20,11 @@
       <input
         formControlName="password"
         class="border border-dark focus:border-light rounded-xs py-3 px-5 bg-dark w-full text-sm font-1"
-        type="text"
+        type="password"
         name="password"
         id="password"
-        placeholder="Enter login"
+        autocomplete="current-password"
+        placeholder="Enter password"
       />
       <button class="btn btn--shadow mt-8 w-full">Enter</button>
     </form>
